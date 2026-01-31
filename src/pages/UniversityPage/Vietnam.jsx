@@ -1,7 +1,7 @@
 import banner from "../../assets/home-bg2.jpeg";
 import Footer from "../../components/Footer";
 import "../ServicesPage/ServiceBanner.css";
-import Bmtu from "./bmtu";
+import Bmtu from "./Bmtu"
 import BookConsultation from "./BookConsultation";
 
 
@@ -23,7 +23,7 @@ export default function Vietnam() {
       </div>
     </section>
 
-    <Bmtu/>
+  <Bmtu/>
 
 <section className="video-section">
   <div className="videos-container">
