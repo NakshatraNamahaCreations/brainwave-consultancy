@@ -1,0 +1,106 @@
+.sf-section {
+  padding: 80px 20px;
+  background: #ffffff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sf-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sf-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.sf-kicker {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  background: #e0e7ff;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.sf-subtitle {
+  font-size: 16px;
+  color: #475569;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* Slider spacing */
+.sf-slide {
+  padding: 0 15px;
+}
+
+/* Card */
+.sf-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px;
+  height: 100%;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+  text-align: left;
+  position: relative;
+}
+
+/* Quote */
+.sf-quote {
+  font-size: 60px;
+  color: #bccaff;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-weight: bold;
+}
+
+/* User */
+.sf-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sf-user img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sf-user h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #0f172a;
+}
+
+.sf-user span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Text */
+.sf-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* Rating */
+.sf-rating {
+  display: flex;
+  gap: 4px;
+  color: #fbe13c;
+}

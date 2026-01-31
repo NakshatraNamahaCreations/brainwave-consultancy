@@ -1,0 +1,240 @@
+/* =========================
+   PAGE BASE
+========================= */
+.services-page {
+  background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.services-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* =========================
+   HERO
+========================= */
+.services-hero {
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.services-hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #0b3a63;
+  margin-bottom: 16px;
+}
+
+.services-hero p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #475569;
+}
+
+/* =========================
+   CENTER TIMELINE
+========================= */
+.services-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 280px;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(135deg, #2f3c8f, #f3a6b8);
+  transform: translateX(-50%);
+}
+
+/* =========================
+   SERVICE CHAPTER
+========================= */
+.service-chapter {
+  position: relative;
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+/* Alternate left / right layout */
+.service-chapter:nth-child(even) {
+  direction: rtl;
+}
+
+.service-chapter:nth-child(even) * {
+  direction: ltr;
+}
+
+/* =========================
+   SERVICE IMAGE
+========================= */
+.service-image {
+  margin: 18px 0 28px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.service-image img {
+  width: 500px;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* =========================
+   SOFT GLOW PER SECTION
+========================= */
+.service-chapter::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 214, 165, 0.35),
+    transparent 60%
+  );
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* =========================
+   HEADER
+========================= */
+.service-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 24px;
+  flex-direction: column;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2f3c8f, #f3a6b8);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 18px 40px rgba(63, 82, 209, 0.35);
+}
+
+.service-header h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #0b3a63;
+}
+
+/* =========================
+   SERVICE BODY (GLASS CARD)
+========================= */
+.service-body {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  padding: 44px 48px;
+  border-radius: 32px;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   TEXT
+========================= */
+.service-body p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #475569;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+/* =========================
+   LIST (CUSTOM MARKERS)
+========================= */
+.service-body ul {
+  margin-top: 26px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+
+.service-body li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+  font-weight: 500;
+}
+
+.service-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2f3c8f, #f3a6b8);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .services-wrapper::before {
+    display: none;
+  }
+
+  .service-chapter {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .service-chapter:nth-child(even) {
+    direction: ltr;
+  }
+
+  .service-body ul {
+    grid-template-columns: 1fr;
+  }
+
+  .services-hero h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-page {
+    padding: 80px 16px;
+  }
+
+  .services-hero p {
+    font-size: 16px;
+  }
+
+  .service-header h2 {
+    font-size: 26px;
+  }
+
+  .service-body {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-image img {
+    height: 200px;
+  }
+}

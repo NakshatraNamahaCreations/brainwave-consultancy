@@ -1,0 +1,27 @@
+.scrolltop-btn {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #2f3c8f;
+  background: #97acd7;
+  color: #2f3c8f;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  box-shadow: 3px 3px 0 #2f3c8f;
+  transition: all 0.3s ease;
+}
+
+.scrolltop-btn:hover {
+  background: #2f3c8f;
+  color: #97acd7;
+  box-shadow: 3px 3px 0 #97acd7;
+  transform: translateY(-3px);
+}

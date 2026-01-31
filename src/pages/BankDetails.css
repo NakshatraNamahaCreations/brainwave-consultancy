@@ -1,0 +1,101 @@
+.bank-section {
+  padding: 80px 20px;
+  background: #fafafa;
+}
+
+.bank-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.bank-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.bank-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.bank-subtitle {
+  font-size: 16px;
+  color: #555;
+}
+
+/* CONTENT */
+.bank-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* CARDS */
+.bank-card,
+.scanner-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+/* BANK DETAILS */
+.bank-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.bank-row:last-child {
+  border-bottom: none;
+}
+
+.bank-row span {
+  color: #666;
+}
+
+.bank-row strong {
+  color: #111;
+}
+
+/* QR */
+.qr-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.qr-wrapper img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+.scanner-note {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .bank-content {
+    grid-template-columns: 1fr;
+  }
+
+  .bank-title {
+    font-size: 28px;
+  }
+}
