@@ -108,12 +108,12 @@ export default function BookConsultation({
               />
             </div>
 
-            <textarea
+            {/* <textarea
               name="message"
               placeholder="Your Message"
               rows="4"
               onChange={handleChange}
-            />
+            /> */}
 
             <button type="submit" className="consult-btn">
               Book Consultation

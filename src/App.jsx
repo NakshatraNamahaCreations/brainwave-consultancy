@@ -21,6 +21,9 @@ import Nepal from './pages/UniversityPage/Nepal';
 import Russia from './pages/UniversityPage/Russia';
 import Career from './pages/CareerCounseling/Career';
 import Gallery from './pages/Gallery/Gallery';
+import TermsAndConditions from './Policy/Terms&Condition';
+import Disclaimer from './Policy/Disclaimer';
+import RefundPolicy from './Policy/RefundPolicy';
 
 function App() {
   useEffect(() => {
@@ -49,6 +52,9 @@ function App() {
         <Route path="/universities-in-russia" element={<Russia />} />
         <Route path='/career-counseling' element={<Career/>}/>
         <Route path='/gallery' element={<Gallery/>}/>
+        <Route path='/terms-and-conditions' element={<TermsAndConditions/>}/>
+        <Route path='/disclaimer' element={<Disclaimer/>}/>
+        <Route path='/refund-policy' element={<RefundPolicy/>}/>
       </Routes>
     </Router>
   );

@@ -173,6 +173,33 @@
   background: #2f3c8f;
   color: #fff;
   font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal-links {
+  margin-top: 8px;
+  font-size: 15px;
+  z-index: 2;
+  font-weight: 500;
+}
+
+.footer-legal-links a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+.footer-legal-links a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom p{
+  margin: 0;
+  font-weight: 500;
+  color: #fff;
+  z-index: 2;
 }
 
 /* =========================

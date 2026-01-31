@@ -1,8 +1,50 @@
 import banner from "../../assets/home-bg2.jpeg";
 import "./contactus.css";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLocationArrow, FaFacebook, FaInstagram, FaYoutube, FaClock } from "react-icons/fa";
+import React, { useState } from "react";
+
 
 export default function ContactusBanner() {
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+
+const [loading, setLoading] = useState(false);
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const res = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Thank you! Your message has been sent.");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } else {
+      alert(data.message || "Something went wrong");
+    }
+  } catch (error) {
+    alert("Server error. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
   return (
     <>
     <section
@@ -32,35 +74,67 @@ export default function ContactusBanner() {
           <h2 class="section-heading">Write us a message</h2>
         </div>
 
-        <form class="contact-form-grid">
-          <div class="form-group">
-            <input type="text" placeholder="Your Name" required />
-          </div>
-
-          <div class="form-group">
-            <input type="email" placeholder="Your Email" required />
-          </div>
-
-          <div class="form-group">
-            <input type="tel" placeholder="Your Phone" />
-          </div>
-
-          <div class="form-group">
-  <textarea 
-    placeholder="Ask your query" 
-    rows="3" 
-    required
-  ></textarea>
-</div>
+ <form className="contact-form-grid" onSubmit={handleSubmit}>
 
 
+  <div class="form-group">
+    <label>
+      Your Name <span class="required">*</span>
+    </label>
+    <input
+      type="text"
+      required
+      value={formData.name}
+  onChange={handleChange}
+    />
+  </div>
 
-          <div class="form-group full text-center">
-            <button type="submit" class="contact-submit-btn">
-              Send a message
-            </button>
-          </div>
-        </form>
+  <div class="form-group">
+    <label>
+      Your Email <span class="required">*</span>
+    </label>
+    <input
+      type="email"
+      required
+       value={formData.email}
+  onChange={handleChange}
+    />
+  </div>
+
+  <div class="form-group">
+    <label>
+      Your Phone <span class="required">*</span>
+    </label>
+    <input
+      type="tel"
+      required
+      value={formData.phone}
+  onChange={handleChange}
+    />
+  </div>
+
+  <div class="form-group">
+    <label>
+      Ask your query
+    </label>
+    <textarea
+      rows="3"
+      required
+      value={formData.message}
+  onChange={handleChange}
+    ></textarea>
+  </div>
+
+  <div class="form-group full text-center">
+    <button type="submit" class="contact-submit-btn">
+      Send a message
+    </button>
+  </div>
+
+</form>
+
+
+
       </div>
 
     

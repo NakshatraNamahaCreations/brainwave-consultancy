@@ -1,10 +1,19 @@
 import React from "react";
 import "./Career.css";
-import { FaChartLine, FaHandPaper } from "react-icons/fa";
+import {  FaHandPaper } from "react-icons/fa";
 import { MdPsychology } from "react-icons/md";
 import Footer from "../../components/Footer";
+import "../../components/PopupForm.css";
+import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 export default function Career() {
+
+   const [showPopup, setShowPopup] = useState(false);
+
+  const openPopup = () => setShowPopup(true);
+  const closePopup = () => setShowPopup(false);
+
   return (
     <>
     <div className="career-page">
@@ -218,25 +227,92 @@ export default function Career() {
 
       {/* CTA */}
       <section className="career-cta">
-       <div className="career-container cta-grid">
-  <button className="cta-btn">
-    TAKE Psychometric Career Assessment Tests
-    <span className="cta-icon">
-      <MdPsychology />
-    </span>
-  </button>
+  <div className="career-container cta-grid">
+    <button className="cta-btn" onClick={openPopup}>
+      TAKE Psychometric Career Assessment Tests
+      <span className="cta-icon">
+        <MdPsychology />
+      </span>
+    </button>
 
-  <button className="cta-btn">
-    TAKE DMIT
-    <span className="cta-icon">
-      <FaHandPaper />
-    </span>
-  </button>
-</div>
-
-      </section>
-
+    <button className="cta-btn" onClick={openPopup}>
+      TAKE DMIT
+      <span className="cta-icon">
+        <FaHandPaper />
+      </span>
+    </button>
+  </div>
+</section>
     </div>
+
+{showPopup && (
+  <div className="popup-overlay" onClick={closePopup}>
+    
+    {/* CLOSE ICON */}
+    <button className="popup-close-btn" onClick={closePopup}>
+      <FaTimes />
+    </button>
+
+    <div
+      className="popup-form"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <h2>Enquire Now</h2>
+
+      <form>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" required />
+
+        <select required defaultValue="">
+          <option value="" disabled>Select University</option>
+          <option value="uni1">Buon Ma Thout University (BTU), Vietnum</option>
+          <option value="uni2">Nam Can Tho University (NCTU), Vietnam</option>
+          <option value="uni3">Duy Tan University (DTU), Vietnam</option>
+          <option value="uni4">Dong A University (DAU), Vietnam</option>
+          <option value="uni5">VTT University, Vietnam</option>
+          <option value="uni6">SEU – Georgian National University, Tbilisi, Georgia</option>
+          <option value="uni7">East West University, Tbilisi, Georgia</option>
+          <option value="uni8">BAU International University, Batumi, Georgia</option>
+          <option value="uni9">SEU Avicenna Medical Program, Tbilisi, Georgia</option>
+          <option value="uni10">Geomedi Medical University, Tbilisi, Georgia</option>
+          <option value="uni11">David Tvildiani Medical University (DTMU), Tbilisi, Georgia</option>
+          <option value="uni12">Caucasus International University (CIU), Tbilisi, Georgia</option>
+          <option value="uni13">GAU – Georgian American University, Tbilisi, Georgia</option>
+          <option value="uni14">Tashkent Medical University – Termez Branch, Uzbekistan</option>
+          <option value="uni15">Samarkand State Medical University, Uzbekistan</option>
+          <option value="uni16">Bukhara State Medical University, Uzbekistan</option>
+          <option value="uni17">Andijan State Medical University, Uzbekistan</option>
+          <option value="uni18">Nobel Medical College & Teaching Hospital, Biratnagar – Nepal</option>
+          <option value="uni19">Birat Medical College & Teaching Hospital, Biratnagar – Nepal</option>
+          <option value="uni20">KMC – Kathmandu Medical College, Nepal</option>
+          <option value="uni21">Patan Academy of Health Sciences (PAHS), Lalitpur – Nepal</option>
+          <option value="uni22">BP Koirala Institute of Health Sciences (BPKIHS), Dharan – Nepal</option>
+          <option value="uni23">Janaki Medical College & Teaching Hospital, Janakpur – Nepal</option>
+          <option value="uni24">🇷🇺 Kazan State Medical University – Russia</option>
+          <option value="uni25">🇷🇺 Orel State Medical University – Russia</option>
+          <option value="uni26">🇷🇺 Volgograd State Medical University – Russia</option>
+          <option value="uni27">🇷🇺 Astrakhan State Medical University – Russia</option>
+          <option value="uni28">🇷🇺 Kuban State Medical University – Russia</option>
+          <option value="uni29">🇷🇺 Altai State Medical University – Russia</option>
+          <option value="uni30">🇷🇺 Mari State University – Russia</option>
+          <option value="uni31">🇷🇺 Sechenov First Moscow State Medical University – Russia</option>
+          <option value="uni32">🇷🇺 Saint Petersburg State Medical University – Russia</option>
+          <option value="uni33">🇷🇺 Kursk State Medical University – Russia</option>
+          <option value="uni34">🇷🇺 Bashkir State Medical University – Russia</option>
+        </select>
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button type="submit" className="submit-btn">
+          Submit Application
+        </button>
+      </form>
+    </div>
+  </div>
+)}
+
+
 <Footer/>
 </>
   );

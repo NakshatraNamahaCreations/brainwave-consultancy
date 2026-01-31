@@ -20,6 +20,49 @@ const closePopup = () => {
   setShowPopup(false);
 };
 
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  university: "",
+  message: "",
+});
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/enquiry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Enquiry sent successfully!");
+      setShowPopup(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        university: "",
+        message: "",
+      });
+    } else {
+      alert(data.message);
+    }
+  } catch (error) {
+    alert("Server error. Please try again.");
+  }
+};
+
+
   return (
     <>
       {/* TOP INFO BAR */}
@@ -136,19 +179,55 @@ const closePopup = () => {
     >
       <h2>Enquire Now</h2>
 
-      <form>
-        <input type="text" placeholder="Full Name" required />
-        <input type="email" placeholder="Email Address" required />
-        <input type="tel" placeholder="Phone Number" required />
+    <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Full Name" required   value={formData.name}
+  onChange={handleChange}/>
+        <input type="email" placeholder="Email Address" required   value={formData.email}
+  onChange={handleChange}/>
+        <input type="tel" placeholder="Phone Number" required   value={formData.phone}
+  onChange={handleChange}/>
 
-        <select required defaultValue="">
+        <select required defaultValue=""   value={formData.university}
+  onChange={handleChange}>
           <option value="" disabled>Select University</option>
-          <option value="harvard">Harvard University</option>
-          <option value="stanford">Stanford University</option>
-          <option value="mit">MIT</option>
+          <option value="uni1">Buon Ma Thout University (BTU), Vietnum</option>
+          <option value="uni2">Nam Can Tho University (NCTU), Vietnam</option>
+          <option value="uni3">Duy Tan University (DTU), Vietnam</option>
+          <option value="uni4">Dong A University (DAU), Vietnam</option>
+          <option value="uni5">VTT University, Vietnam</option>
+          <option value="uni6">SEU – Georgian National University, Tbilisi, Georgia</option>
+          <option value="uni7">East West University, Tbilisi, Georgia</option>
+          <option value="uni8">BAU International University, Batumi, Georgia</option>
+          <option value="uni9">SEU Avicenna Medical Program, Tbilisi, Georgia</option>
+          <option value="uni10">Geomedi Medical University, Tbilisi, Georgia</option>
+          <option value="uni11">David Tvildiani Medical University (DTMU), Tbilisi, Georgia</option>
+          <option value="uni12">Caucasus International University (CIU), Tbilisi, Georgia</option>
+          <option value="uni13">GAU – Georgian American University, Tbilisi, Georgia</option>
+          <option value="uni14">Tashkent Medical University – Termez Branch, Uzbekistan</option>
+          <option value="uni15">Samarkand State Medical University, Uzbekistan</option>
+          <option value="uni16">Bukhara State Medical University, Uzbekistan</option>
+          <option value="uni17">Andijan State Medical University, Uzbekistan</option>
+          <option value="uni18">Nobel Medical College & Teaching Hospital, Biratnagar – Nepal</option>
+          <option value="uni19">Birat Medical College & Teaching Hospital, Biratnagar – Nepal</option>
+          <option value="uni20">KMC – Kathmandu Medical College, Nepal</option>
+          <option value="uni21">Patan Academy of Health Sciences (PAHS), Lalitpur – Nepal</option>
+          <option value="uni22">BP Koirala Institute of Health Sciences (BPKIHS), Dharan – Nepal</option>
+          <option value="uni23">Janaki Medical College & Teaching Hospital, Janakpur – Nepal</option>
+          <option value="uni24">🇷🇺 Kazan State Medical University – Russia</option>
+          <option value="uni25">🇷🇺 Orel State Medical University – Russia</option>
+          <option value="uni26">🇷🇺 Volgograd State Medical University – Russia</option>
+          <option value="uni27">🇷🇺 Astrakhan State Medical University – Russia</option>
+          <option value="uni28">🇷🇺 Kuban State Medical University – Russia</option>
+          <option value="uni29">🇷🇺 Altai State Medical University – Russia</option>
+          <option value="uni30">🇷🇺 Mari State University – Russia</option>
+          <option value="uni31">🇷🇺 Sechenov First Moscow State Medical University – Russia</option>
+          <option value="uni32">🇷🇺 Saint Petersburg State Medical University – Russia</option>
+          <option value="uni33">🇷🇺 Kursk State Medical University – Russia</option>
+          <option value="uni34">🇷🇺 Bashkir State Medical University – Russia</option>
         </select>
 
-        <textarea placeholder="Your Message"></textarea>
+        <textarea placeholder="Your Message" value={formData.message}
+  onChange={handleChange}></textarea>
 
         <button type="submit" className="submit-btn">
           Submit Application

@@ -35,7 +35,6 @@ const images = [
   "/pictures/IMG_9459.jpg",
   "/pictures/IMG_9464.jpg",
   "/pictures/IMG_9502.jpg",
-  "/pictures/IMG_9467.jpg",
   "/pictures/IMG_9474.jpg",
   "/pictures/IMG_9507.jpg"
 ];

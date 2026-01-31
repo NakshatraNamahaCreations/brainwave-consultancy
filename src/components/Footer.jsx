@@ -72,9 +72,21 @@ const Footer = () => {
 
   </div>
 
-  <div className="footer-bottom">
-    <p>© {new Date().getFullYear()} Brainwave Consultancy. All rights reserved.</p>
+ <div className="footer-bottom">
+  <div className="footer-legal-links">
+    <Link to="/terms-and-conditions">Terms & Conditions</Link>
+    <span>|</span>
+    <Link to="/disclaimer">Disclaimer</Link>
+    <span>|</span>
+    <Link to="/refund-policy">Refund Policy</Link>
   </div>
+
+  <p>
+    © {new Date().getFullYear()} Brainwave Consultancy. All rights reserved.
+  </p>
+</div>
+
+
 </footer>
 
   );
