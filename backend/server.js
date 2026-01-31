@@ -10,10 +10,17 @@ const app = express();
 ================================ */
 app.use(
   cors({
-    origin: "*", // change to your frontend URL in production
+    origin: [
+      "http://localhost:5173", // local Vite dev
+      "http://localhost:3000", // local CRA (if any)
+      "https://brainwave-consultancy.netlify.app", // Netlify frontend
+      "https://brainwave-consultancy.onrender.com", // Render (optional, safe)
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.use(express.json());
+
 
 /* ===============================
    NODEMAILER TRANSPORT
@@ -39,7 +46,7 @@ app.post("/api/enquiry", async (req, res) => {
   try {
     await transporter.sendMail({
       from: `"Brainwave Website" <${process.env.EMAIL_USER}>`,
-      to: "info@brainwaveconsultancy.net",
+      to: "BrainwaveConsultancyLavanya@gmail.com",
       subject: "New Enquiry from Website",
       html: `
         <h3>New Enquiry Received</h3>
@@ -71,7 +78,7 @@ app.post("/api/contact", async (req, res) => {
   try {
     await transporter.sendMail({
       from: `"Brainwave Contact Form" <${process.env.EMAIL_USER}>`,
-      to: "info@brainwaveconsultancy.net",
+      to: "BrainwaveConsultancyLavanya@gmail.com",
       subject: "New Contact Enquiry – Website",
       html: `
         <h3>New Contact Enquiry</h3>

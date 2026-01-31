@@ -20,17 +20,54 @@ export default function BookConsultation({
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    const payload = {
-      ...formData,
-      university: universityName,
-    };
-
-    console.log(payload);
-    alert(`Consultation request submitted for ${universityName}`);
+  const payload = {
+    name: `${formData.firstName} ${formData.lastName}`,
+    email: formData.email,
+    phone: formData.phone,
+    university: universityName,
+    message: `
+City: ${formData.city}
+State: ${formData.state}
+`,
   };
+
+  try {
+    const res = await fetch(
+      "https://brainwave-consultancy.onrender.com/api/enquiry",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Consultation request submitted successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        city: "",
+        state: "",
+        message: "",
+      });
+    } else {
+      alert(data.message || "Failed to submit consultation request");
+    }
+  } catch (error) {
+    alert("Server error. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <section
@@ -60,52 +97,59 @@ export default function BookConsultation({
 
           <form onSubmit={handleSubmit}>
             <div className="form-row">
+             <input
+  type="text"
+  name="firstName"
+  placeholder="First Name"
+  required
+  value={formData.firstName}
+  onChange={handleChange}
+/>
               <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                required
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                required
-                onChange={handleChange}
-              />
+              
+  type="text"
+  name="lastName"
+  placeholder="Last Name"
+  required
+  value={formData.lastName}
+  onChange={handleChange}
+/>
             </div>
 
             <div className="form-row">
+             <input
+  type="email"
+  name="email"
+  placeholder="Email Address"
+  required
+  value={formData.email}
+  onChange={handleChange}
+/>
               <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                required
-                onChange={handleChange}
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                required
-                onChange={handleChange}
-              />
+  type="tel"
+  name="phone"
+  placeholder="Phone Number"
+  required
+  value={formData.phone}
+  onChange={handleChange}
+/>
             </div>
 
             <div className="form-row">
-              <input
-                type="text"
-                name="city"
-                placeholder="City"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="state"
-                placeholder="State"
-                onChange={handleChange}
-              />
+             <input
+  type="text"
+  name="city"
+  placeholder="City"
+  value={formData.city}
+  onChange={handleChange}
+/>
+             <input
+  type="text"
+  name="state"
+  placeholder="State"
+  value={formData.state}
+  onChange={handleChange}
+/>
             </div>
 
             {/* <textarea
