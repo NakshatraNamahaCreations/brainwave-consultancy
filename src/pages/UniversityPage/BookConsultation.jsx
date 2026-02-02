@@ -37,7 +37,7 @@ State: ${formData.state}
 
   try {
     const res = await fetch(
-      "https://brainwave-consultancy.onrender.com/api/enquiry",
+      "https://brainwave-consultancy.netlify.app/api/enquiry",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
